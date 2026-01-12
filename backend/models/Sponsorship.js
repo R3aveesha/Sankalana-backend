@@ -7,6 +7,13 @@ const sponsorshipSchema = new mongoose.Schema(
     price: { type: Number, required: true, min: 0 },
     description: { type: String, trim: true },
     website: { type: String, trim: true },
+    sponsorType: { 
+      type: String, 
+      enum: ['premium', 'gold', 'silver'], 
+      required: true,
+      default: 'silver'
+    },
+    
     active: { type: Boolean, default: true },
   },
   { timestamps: true }
