@@ -15,8 +15,10 @@ app.use("/uploads", express.static(path.join(__dirname, "uploads")));
 // Routes
 const sponsorshipRoutes = require("./routes/sponsorshipRoutes");
 const packageRoutes = require("./routes/packageRoutes");
+const adminRoutes = require("./routes/adminRoutes");
 app.use("/api/sponsorships", sponsorshipRoutes);
 app.use("/api/packages", packageRoutes);
+app.use("/api/admin", adminRoutes);
 
 app.get("/", (req, res) => {
   res.send("API is running...");
