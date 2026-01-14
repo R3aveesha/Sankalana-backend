@@ -2,13 +2,13 @@ const Sponsorship = require("../models/Sponsorship");
 
 exports.createSponsorship = async (req, res) => {
   try {
-    const { sponsorName, price, description, website, active } = req.body;
+    const { sponsorName, price, description, website, active, sponsorType } = req.body;
     const file = req.file;
     if (!sponsorName || price === undefined) {
       return res.status(400).json({ message: "Missing required fields" });
     }
     const imageUrl = file ? `/uploads/${file.filename}` : null;
-    const doc = await Sponsorship.create({ sponsorName, imageUrl, price, description, website, active });
+    const doc = await Sponsorship.create({ sponsorName, imageUrl, price, description, website, active, sponsorType });
     res.status(201).json(doc);
   } catch (err) {
     res.status(500).json({ message: err.message });
